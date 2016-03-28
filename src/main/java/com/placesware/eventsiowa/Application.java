@@ -1,59 +1,15 @@
 package com.placesware.eventsiowa;
 
-//
-//import java.util.ArrayList;
-//import java.util.List;
-//
-//import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-//import org.springframework.context.annotation.Configuration;
-//import org.springframework.data.geo.Point;
-//import org.springframework.data.geo.Polygon;
-//import org.springframework.data.mongodb.core.geo.GeoJsonPoint;
-
-//import com.mongodb.DB;
-//import com.mongodb.MongoClient;
-//import com.mongodb.MongoException;
-//import org.jongo.Jongo;
-//import org.jongo.MongoCollection;
-//import org.springframework.boot.SpringApplication;
-//import org.springframework.boot.autoconfigure.SpringBootApplication;
-//import org.springframework.context.annotation.Bean;
-
-import java.net.UnknownHostException;
 
 @SpringBootApplication
 public class Application implements CommandLineRunner {
 
-//    @Autowired
-//    private CustomerRepository repository;
-
-//    @Autowired
-//    private EventRepository eventRepository;
-
-
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
-
-//    @Bean
-//    public Jongo jongo() {
-//        DB db;
-////        try {
-//            db = new MongoClient("127.0.0.1", 27017).getDB("test");
-////        } catch (UnknownHostException e) {
-////            throw new MongoException("Connection error : ", e);
-////        }
-//        return new Jongo(db);
-//    }
-//
-//    @Bean
-//    public MongoCollection users() {
-//        return jongo().getCollection("users");
-//    }
-
 
     @Override
     public void run(String... args) throws Exception {

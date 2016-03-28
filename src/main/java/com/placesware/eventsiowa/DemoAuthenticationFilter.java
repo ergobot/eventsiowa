@@ -21,19 +21,7 @@ public class DemoAuthenticationFilter extends OncePerRequestFilter {
 
         String token = request.getHeader("X-Authorization");
 
-        // validate the value in xAuth
-//        if(isValid(xAuth) == false){
-
-
-
         User user = Token.ValidateAndGetUser(token);
-//        if(true){
-//            throw new SecurityException();
-//        }
-
-//        User user = new User();
-//        user.setEmail("email");
-//        user.setSub("sub");
 
         // The token is 'valid' so magically get a user id from it
         String sub = "testsub";//getUserIdFromToken(xAuth);

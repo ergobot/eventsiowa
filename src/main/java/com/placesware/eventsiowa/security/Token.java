@@ -14,9 +14,10 @@ import org.springframework.security.authentication.InternalAuthenticationService
 
 public class Token {
 
-	
+
 	private static String CLIENT_ID = "";
-	
+
+
 	public static void Validate(String idTokenString) throws InternalAuthenticationServiceException{
 		
 		if(idTokenString == null){
