@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/eventsiowa.iml" filepath="$PROJECT_DIR$/.idea/modules/eventsiowa.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/eventsiowa_main.iml" filepath="$PROJECT_DIR$/.idea/modules/eventsiowa_main.iml" group="eventsiowa" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/eventsiowa_test.iml" filepath="$PROJECT_DIR$/.idea/modules/eventsiowa_test.iml" group="eventsiowa" />
+    </modules>
+  </component>
+</project>
