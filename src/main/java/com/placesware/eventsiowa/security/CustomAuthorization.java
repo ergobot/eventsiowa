@@ -5,9 +5,9 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
-@Component("writeSecurityService")
+@Component(value="customAuthorization")
 public class CustomAuthorization {
-    public boolean hasPermission(Authentication authentication, String eventId){
+    public boolean hasPermission(Authentication authentication){
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = (User) auth.getPrincipal();

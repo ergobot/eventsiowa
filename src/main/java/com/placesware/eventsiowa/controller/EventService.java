@@ -4,6 +4,7 @@ import com.placesware.eventsiowa.security.User;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,9 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class EventService {
 
 
-    @PreAuthorize("@writeSecurityService.hasPermission(authentication, #input")
-    @RequestMapping(value = "/echo/{input}", method = RequestMethod.POST)
-    public String echo(String input){
+    @PreAuthorize("@customAuthorization.hasPermission(authentication")
+    @RequestMapping(value = "/echo", method = RequestMethod.POST)
+    public String echo(@RequestBody String input){
         // Demo get auth and user
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = (User) auth.getPrincipal();
