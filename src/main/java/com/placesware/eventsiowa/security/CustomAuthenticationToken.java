@@ -8,7 +8,7 @@ import org.springframework.security.core.GrantedAuthority;
  *
  * @author malike_st
  */
-public class DemoAuthenticationToken extends AbstractAuthenticationToken {
+public class CustomAuthenticationToken extends AbstractAuthenticationToken {
 
 
 
@@ -16,7 +16,7 @@ public class DemoAuthenticationToken extends AbstractAuthenticationToken {
     private final Object credentials;
     private final boolean client;
 
-    public DemoAuthenticationToken(Object principal, Object credentials, Collection<? extends GrantedAuthority> authorities) {
+    public CustomAuthenticationToken(Object principal, Object credentials, Collection<? extends GrantedAuthority> authorities) {
         super(authorities);
         this.principal = principal;
         this.credentials = credentials;
@@ -24,7 +24,7 @@ public class DemoAuthenticationToken extends AbstractAuthenticationToken {
         super.setAuthenticated(true);
     }
 
-    public DemoAuthenticationToken(Object principal, Object credentials) {
+    public CustomAuthenticationToken(Object principal, Object credentials) {
         super(null);
         this.principal = principal;
         this.credentials = credentials;

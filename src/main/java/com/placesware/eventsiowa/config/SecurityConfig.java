@@ -1,6 +1,6 @@
 package com.placesware.eventsiowa.config;
 
-import com.placesware.eventsiowa.DemoAuthenticationFilter;
+import com.placesware.eventsiowa.security.CustomAuthenticationFilter;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
@@ -31,7 +31,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 anonymous().disable();//.
 //                exceptionHandling().authenticationEntryPoint(unauthorizedEntryPoint());
 
-        http.addFilterBefore(new DemoAuthenticationFilter(), BasicAuthenticationFilter.class);
+        http.addFilterBefore(new CustomAuthenticationFilter(), BasicAuthenticationFilter.class);
 
     }
 

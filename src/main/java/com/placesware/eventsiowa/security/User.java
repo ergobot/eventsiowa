@@ -1,4 +1,4 @@
-package com.placesware.eventsiowa;
+package com.placesware.eventsiowa.security;
 
 import java.util.List;
 
