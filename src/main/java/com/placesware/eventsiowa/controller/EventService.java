@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class EventService {
 
 
-    @PreAuthorize("@customAuthorization.hasPermission(authentication")
+    @PreAuthorize("hasPermission('USER')")
     @RequestMapping(value = "/echo", method = RequestMethod.POST)
     public String echo(@RequestBody String input){
         // Demo get auth and user

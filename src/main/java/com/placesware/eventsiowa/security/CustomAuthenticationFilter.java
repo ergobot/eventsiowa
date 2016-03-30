@@ -1,6 +1,7 @@
 package com.placesware.eventsiowa.security;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -19,7 +20,14 @@ public class CustomAuthenticationFilter extends OncePerRequestFilter {
 
         String token = request.getHeader("X-Authorization");
 
-        User user = Token.ValidateAndGetUser(token);
+//        User user = Token.ValidateAndGetUser(token);
+        // test user
+        User user = new User();
+        user.setEmail("test@gmail.com");
+        user.setSub("12348595098");
+        ArrayList<String> rights = new ArrayList<String>();
+        rights.add("ADMIN");
+        user.setRights(rights);
 
         // The token is 'valid' so magically get a user id from it
         String sub = "testsub";//getUserIdFromToken(xAuth);
