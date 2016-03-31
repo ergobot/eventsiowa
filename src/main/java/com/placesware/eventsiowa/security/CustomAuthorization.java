@@ -10,6 +10,15 @@ import java.io.Serializable;
 
 @Configuration
 public class CustomAuthorization implements PermissionEvaluator {
+
+    public boolean isDataOwner(Authentication authentication, String eventId){
+        User user = (User) authentication.getPrincipal();
+
+
+
+        return true;
+    }
+
     public boolean hasPermission(Authentication authentication){
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -34,7 +43,7 @@ public class CustomAuthorization implements PermissionEvaluator {
     @Override
     public boolean hasPermission(Authentication authentication, Object targetDomainObject, Object permission) {
         return false;
-}
+    }
 
     @Override
     public boolean hasPermission(Authentication authentication, Serializable targetId, String targetType, Object permission) {

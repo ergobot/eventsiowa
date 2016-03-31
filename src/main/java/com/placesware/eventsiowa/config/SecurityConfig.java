@@ -25,56 +25,8 @@ import org.springframework.security.web.authentication.www.BasicAuthenticationFi
 @ComponentScan
 @EnableWebMvcSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-//@Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-//    @Autowired
-//    private CustomAuthorization permissionEvaluator;
-//
-//    @Bean
-//    public DefaultMethodSecurityExpressionHandler expressionHandler()
-//    {
-//        DefaultMethodSecurityExpressionHandler handler = new DefaultMethodSecurityExpressionHandler();
-//        handler.setPermissionEvaluator(permissionEvaluator);
-//        return handler;
-//    }
-
-
-//    @Configuration
-//    @EnableGlobalMethodSecurity(prePostEnabled = true)
-//    static class MethodSecurityConfiguration extends GlobalMethodSecurityConfiguration{
-//        @Autowired
-//        private CustomAuthorization customAuthorization;
-
-//        @Bean(name = "spPermissionEvaluator")
-//        public PermissionEvaluator permissionEvaluator() {
-//            return new CustomAuthorization();
-//        }
-
-        //An expression handler used to secure methods. This overrides the DefaultMethodSecurityExpressionHandler to include roleHierarchy.
-//        @Bean
-//        public DefaultMethodSecurityExpressionHandler defaultMethodSecurityExpressionHandler( RoleHierarchy roleHierarchy ) {
-//            DefaultMethodSecurityExpressionHandler expressionHandler = new DefaultMethodSecurityExpressionHandler();
-//
-//            //To use hasPermission() expressions, we have to configure a PermissionEvaluator See 15.3.2 Built-In Expression
-//            //@http://static.springsource.org/spring-security/site/docs/3.0.x/reference/el-access.html#el-permission-evaluator -->
-//
-//            expressionHandler.setPermissionEvaluator( new CustomPermissionEvaluator().permissionEvaluator() );
-//            expressionHandler.setRoleHierarchy( roleHierarchy );
-//
-//            return expressionHandler;
-//
-//        }
-
-//        @Override
-//        protected MethodSecurityExpressionHandler createExpressionHandler(){
-//            DefaultMethodSecurityExpressionHandler handler =
-//                    new DefaultMethodSecurityExpressionHandler();
-//            handler.setPermissionEvaluator(customAuthorization);
-//            return handler;
-//        }
-
-   // }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -84,7 +36,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 and().
                 authorizeRequests().
 //                antMatchers(actuatorEndpoints()).hasRole(backendAdminRole).
-                anyRequest().authenticated().
+        anyRequest().authenticated().
                 and().
                 anonymous().disable();//.
 //                exceptionHandling().authenticationEntryPoint(unauthorizedEntryPoint());

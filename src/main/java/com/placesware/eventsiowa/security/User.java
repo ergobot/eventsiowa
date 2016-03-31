@@ -10,6 +10,14 @@ public class User {
     private String id;
     private String sub;
 
+    private String email;
+
+    private List<String> rights;
+
+    public List<String> getRights() {
+        return rights;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -34,17 +42,9 @@ public class User {
         this.sub = sub;
     }
 
-    private String email;
-
-    public List<String> getRights() {
-        return rights;
-    }
-
     public void setRights(List<String> rights) {
         this.rights = rights;
     }
-
-    private List<String> rights;
 
     public User() {}
 
