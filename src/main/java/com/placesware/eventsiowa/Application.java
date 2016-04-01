@@ -1,5 +1,7 @@
 package com.placesware.eventsiowa;
 
+import com.placesware.eventsiowa.controller.event.EventRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -13,6 +15,9 @@ import org.springframework.context.annotation.Configuration;
 @ComponentScan
 @SpringBootApplication
 public class Application implements CommandLineRunner {
+
+//    @Autowired
+//    private EventRepository eventRepository;
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);

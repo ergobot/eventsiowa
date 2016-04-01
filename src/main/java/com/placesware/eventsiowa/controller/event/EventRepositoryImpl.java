@@ -2,6 +2,8 @@ package com.placesware.eventsiowa.controller.event;
 
 import java.util.List;
 
+import com.mongodb.DBObject;
+import com.mongodb.QueryBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.geo.Polygon;
 import org.springframework.data.mongodb.core.MongoOperations;
@@ -17,20 +19,13 @@ public class EventRepositoryImpl implements CustomEventRepository {
 
 	private final MongoOperations operations;
 
-	  @Autowired
-	  public EventRepositoryImpl(MongoOperations operations) {
-	    Assert.notNull(operations, "MongoOperations must not be null!");
-	    this.operations = operations;
-	  }
-
 	@Override
-	@RequestMapping(value = "/findinpolygon", method = RequestMethod.POST)
-	@PreAuthorize("@customAuthorization.isDataOwner(authentication, 'hello')")
+//	@RequestMapping(value = "/findinpolygon", method = RequestMethod.POST)
 	public List<Event> findInPolygon(@RequestBody Polygon polygon) {
-		
+
 //		BasicDBObject query = new BasicDBObject("point", new BasicDBObject("$within",
 //				 new BasicDBObject("$polygon", polygon)));
-		
+
 		Criteria c = new Criteria();
 		c.within(polygon);
 		Query query = new Query();
@@ -38,5 +33,24 @@ public class EventRepositoryImpl implements CustomEventRepository {
 		List<Event> results = operations.find(query, Event.class);
 		return results;
 	}
+
+	public List<Event> findEvents(QueryBuilder query){
+		return findEvents(query.get());
+	}
+
+	// query database (find)
+	public List<Event> findEvents(DBObject query) {
+		Query q = (Query)query;
+
+		List<Event> results = operations.find(q, Event.class);
+		return results;
+	}
+
+
+	  @Autowired
+	  public EventRepositoryImpl(MongoOperations operations) {
+	    Assert.notNull(operations, "MongoOperations must not be null!");
+	    this.operations = operations;
+	  }
 
 }
