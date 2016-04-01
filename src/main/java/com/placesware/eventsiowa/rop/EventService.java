@@ -22,7 +22,7 @@ package com.placesware.eventsiowa.rop;
 //import com.placesware.service.request.EventRadiusRequest;
 //import com.placesware.service.request.EventTextRequest;
 //
-//@Path("events")
+//@Path("event")
 public class EventService {
 //
 //	public static EventService INSTANCE = new EventService();

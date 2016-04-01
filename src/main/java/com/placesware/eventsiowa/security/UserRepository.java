@@ -1,5 +1,6 @@
 package com.placesware.eventsiowa.security;
 
+import com.placesware.eventsiowa.controller.user.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 public interface UserRepository extends MongoRepository<User, String> {

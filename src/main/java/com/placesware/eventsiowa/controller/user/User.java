@@ -1,4 +1,4 @@
-package com.placesware.eventsiowa.security;
+package com.placesware.eventsiowa.controller.user;
 
 import java.util.List;
 

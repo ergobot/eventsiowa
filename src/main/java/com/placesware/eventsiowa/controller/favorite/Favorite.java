@@ -1,4 +1,4 @@
-package com.placesware.eventsiowa.rop;
+package com.placesware.eventsiowa.controller.favorite;
 
 import org.springframework.data.annotation.Id;
 

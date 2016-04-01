@@ -1,17 +1,18 @@
-package com.placesware.eventsiowa.controller;
+package com.placesware.eventsiowa.controller.user;
 
-import java.util.List;
-
+import com.placesware.eventsiowa.controller.event.Event;
 import org.springframework.data.geo.Polygon;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
+import java.util.List;
+
 
 @RepositoryRestResource(collectionResourceRel = "event", path = "event")
-public interface EventRepository extends CrudRepository<Event, Long>, CustomEventRepository {
+public interface UserRepository extends CrudRepository<Event, Long>, CustomUserRepository {
 
-//	@PreAuthorize("hasRole('ADMIN')")
+//    @PreAuthorize("@customAuthorization.isDataOwner(authentication, )")
     public List<Event> findInPolygon(@Param("") Polygon polygon);
 
 }

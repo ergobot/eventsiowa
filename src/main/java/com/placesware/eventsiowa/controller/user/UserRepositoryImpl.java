@@ -1,7 +1,6 @@
-package com.placesware.eventsiowa.controller;
+package com.placesware.eventsiowa.controller.user;
 
-import java.util.List;
-
+import com.placesware.eventsiowa.controller.event.Event;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.geo.Polygon;
 import org.springframework.data.mongodb.core.MongoOperations;
@@ -9,12 +8,14 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.util.Assert;
 
-public class EventRepositoryImpl implements CustomEventRepository {
+import java.util.List;
+
+public class UserRepositoryImpl implements CustomUserRepository {
 
 	private final MongoOperations operations;
 
 	  @Autowired
-	  public EventRepositoryImpl(MongoOperations operations) {
+	  public UserRepositoryImpl(MongoOperations operations) {
 
 	    Assert.notNull(operations, "MongoOperations must not be null!");
 	    this.operations = operations;

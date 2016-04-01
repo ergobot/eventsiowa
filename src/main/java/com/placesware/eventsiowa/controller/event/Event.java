@@ -1,4 +1,4 @@
-package com.placesware.eventsiowa.controller;
+package com.placesware.eventsiowa.controller.event;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -98,6 +98,10 @@ public class Event {
 		this.location = location;
 	}
 
+	public String getOwnerId() {return ownerId;}
+
+	public void setOwnerId(String ownerId) {this.ownerId = ownerId;}
+
 	private Date startDate;
 	private Date endDate;
 	private String title;
@@ -108,7 +112,8 @@ public class Event {
 	private ArrayList<String> emails;
 	private ArrayList<String> websites;
 	private GeoJsonPoint location;
-    
+	private String ownerId;
+
     public Event() {}
     
     

@@ -1,6 +1,7 @@
 package com.placesware.eventsiowa.security;
 
 
+import com.placesware.eventsiowa.controller.user.User;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.access.PermissionEvaluator;
 import org.springframework.security.core.Authentication;
