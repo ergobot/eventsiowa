@@ -1,4 +1,4 @@
-package com.placesware.eventsiowa.controller.event;
+package com.placesware.eventsiowa.controller.event.domain;
 
 import java.util.ArrayList;
 import java.util.Date;

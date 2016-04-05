@@ -1,21 +1,14 @@
-package com.placesware.eventsiowa.controller.event;
+package com.placesware.eventsiowa.controller.event.domain;
 
-import java.util.List;
 
-public class EventPolygonRequest {
+public class EventTextRequest {
 
-	private List<Double[]> polygon;
+	private String searchText;
 	private long startDateFilter;
 	private long endDateFilter;
 	
-	public EventPolygonRequest(){}
+	public EventTextRequest(){}
 	
-	public List<Double[]> getPolygon() {
-		return polygon;
-	}
-	public void setPolygon(List<Double[]> polygon) {
-		this.polygon = polygon;
-	}
 	public long getStartDateFilter() {
 		return startDateFilter;
 	}
@@ -29,4 +22,14 @@ public class EventPolygonRequest {
 		this.endDateFilter = endDateFilter;
 	}
 
+	public String getSearchText() {
+		return searchText;
+	}
+
+	public void setSearchText(String searchText) {
+		this.searchText = searchText;
+	}
+
+
+	
 }

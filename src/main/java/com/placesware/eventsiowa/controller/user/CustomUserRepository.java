@@ -1,6 +1,6 @@
 package com.placesware.eventsiowa.controller.user;
 
-import com.placesware.eventsiowa.controller.event.Event;
+import com.placesware.eventsiowa.controller.event.domain.Event;
 import org.springframework.data.geo.Polygon;
 
 import java.util.List;

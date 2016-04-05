@@ -1,6 +1,7 @@
 package com.placesware.eventsiowa.controller.favorite;
 
-import com.placesware.eventsiowa.controller.event.Event;
+import com.placesware.eventsiowa.controller.event.domain.Event;
+import com.placesware.eventsiowa.controller.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.geo.Polygon;
 import org.springframework.data.mongodb.core.MongoOperations;
@@ -39,4 +40,23 @@ public class FavoriteRepositoryImpl implements CustomFavoriteRepository {
 	
 	}
 
+	@Override
+	public List<Favorite> findFavorites() {
+		return null;
+	}
+
+	@Override
+	public List<Event> getFavorites(User user) {
+		return null;
+	}
+
+	@Override
+	public void insertFavorite(Favorite favorite) {
+
+	}
+
+	@Override
+	public void removeFavorite(Favorite favorite) {
+
+	}
 }

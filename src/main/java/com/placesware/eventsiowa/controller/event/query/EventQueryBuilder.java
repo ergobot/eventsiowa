@@ -1,4 +1,4 @@
-package com.placesware.eventsiowa.controller.event;
+package com.placesware.eventsiowa.controller.event.query;
 
 import org.joda.time.DateTime;
 import org.joda.time.Days;
@@ -6,6 +6,10 @@ import com.mongodb.BasicDBList;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
 import com.mongodb.QueryBuilder;
+import org.springframework.data.geo.Polygon;
+import org.springframework.data.mongodb.core.query.BasicQuery;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 
 import java.util.List;
 
@@ -14,14 +18,22 @@ import java.util.List;
  */
 public class EventQueryBuilder {
 
-    // getPolygon query
-    public static BasicDBObject getEventsInPolygonQuery(List<Double[]> polygon) {
+//    // getPolygon query
+    public static BasicDBObject getEventsInPolygonQuery(Polygon polygon) {
         // ***Keep this query ***
         BasicDBObject query = new BasicDBObject("point",new BasicDBObject("$within", new BasicDBObject("$polygon", polygon)));
 //		QueryBuilder query = new QueryBuilder();
 //		query.put("point").withinPolygon(polygon);
         return query;
     }
+    // getPolygon query
+//    public static Query getEventsInPolygonQuery(Polygon polygon) {
+//        Criteria c = new Criteria();
+//        c.within(polygon);
+//        Query query = new Query();
+//        query.addCriteria(c);
+//        return query;
+//    }
 
 
 
