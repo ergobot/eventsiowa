@@ -154,5 +154,16 @@ public class EventQueryBuilder {
         return query;
     }
 
+    public DBObject getEventsByIds(List<String> ids){
+
+        BasicDBList docIds = new BasicDBList();
+
+        docIds.addAll(ids);
+        DBObject inClause = new BasicDBObject("$in", docIds);
+        DBObject query = new BasicDBObject("_id", inClause);
+
+        return query;
+    }
+
 
 }

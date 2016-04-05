@@ -1,4 +1,4 @@
-package com.placesware.eventsiowa.controller.event;
+package com.placesware.eventsiowa.controller.favorite;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
@@ -14,15 +14,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
-//import java.util.Iterator;
 import java.util.List;
 
+//import java.util.Iterator;
+
 @Controller
-@RequestMapping("/event")
-public class EventController {
+@RequestMapping("/favorite")
+public class FavoriteController {
 
     @Autowired
     private EventRepository eventRepository;

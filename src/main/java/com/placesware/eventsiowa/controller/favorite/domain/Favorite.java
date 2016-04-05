@@ -1,4 +1,4 @@
-package com.placesware.eventsiowa.controller.favorite;
+package com.placesware.eventsiowa.controller.favorite.domain;
 
 import org.springframework.data.annotation.Id;
 
