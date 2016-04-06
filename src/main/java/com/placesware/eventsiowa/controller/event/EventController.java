@@ -14,10 +14,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
-//import java.util.Iterator;
 import java.util.List;
 
 @Controller
@@ -28,7 +26,7 @@ public class EventController {
     private EventRepository eventRepository;
 
     @RequestMapping(method = RequestMethod.POST,path = "/findall")
-    @PreAuthorize("@customAuthorization.isDataOwner(authentication, 'hello')")
+//    @PreAuthorize("@customAuthorization.isDataOwner(authentication, 'hello')")
     public List<Event> findAll(@RequestBody String id){
 
         Iterable<Event> event = eventRepository.findAll();
@@ -42,7 +40,7 @@ public class EventController {
     }
 
     @RequestMapping(method = RequestMethod.POST,path = "/findbyids")
-    public List<Event> findByIds(List<String> ids){
+    public List<Event> findByIds(@RequestBody List<String> ids){
 
         EventQueryBuilder eventsQueryBuilder = new EventQueryBuilder();
         DBObject query = eventsQueryBuilder.getEventsByIds(ids);
@@ -53,8 +51,8 @@ public class EventController {
 
 
     @RequestMapping(method = RequestMethod.POST,path = "/geteventsbytext")
-    @PreAuthorize("@customAuthorization.isDataOwner(authentication, 'hello')")
-    public List<Event> getEventsByText(EventTextRequest request) {
+//    @PreAuthorize("@customAuthorization.isDataOwner(authentication, 'hello')")
+    public List<Event> getEventsByText(@RequestBody EventTextRequest request) {
 
 
 //        Token.Validate(request.getClientId());
@@ -69,7 +67,7 @@ public class EventController {
 
 
     @RequestMapping(method = RequestMethod.POST,path = "/geteventsinpolygon")
-    @PreAuthorize("@customAuthorization.isDataOwner(authentication, 'hello')")
+//    @PreAuthorize("@customAuthorization.isDataOwner(authentication, 'hello')")
     public List<Event> getEventsInPolygon(@RequestBody EventPolygonRequest request) {
 
 //        Token.Validate(request.getClientId());
@@ -81,6 +79,19 @@ public class EventController {
         List<Event> results = eventRepository.findEvents(query);
         return results;
 
+    }
+
+
+    @RequestMapping(method = RequestMethod.POST,path="/save")
+    @PreAuthorize("@customAuthorization.isDataOwner(authentication, 'hello')")
+    public void save(@RequestBody Event event) {
+        eventRepository.save(event);
+    }
+
+    @RequestMapping(method = RequestMethod.POST,path="/delete")
+    @PreAuthorize("@customAuthorization.isDataOwner(authentication, 'hello')")
+    public void delete(@RequestBody Event event) {
+        eventRepository.delete(event);
     }
 
 

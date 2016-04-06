@@ -1,10 +1,15 @@
 package com.placesware.eventsiowa.controller.favorite.repo;
 
+import com.mongodb.DBObject;
 import com.placesware.eventsiowa.controller.event.domain.Event;
 import com.placesware.eventsiowa.controller.favorite.domain.Favorite;
+import com.placesware.eventsiowa.controller.favorite.query.FavoriteQueryBuilder;
 import com.placesware.eventsiowa.controller.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
+import org.springframework.data.mongodb.core.query.BasicQuery;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.util.Assert;
 
 import java.util.List;
@@ -23,24 +28,22 @@ public class FavoriteRepositoryImpl implements CustomFavoriteRepository {
 	@Override
 	public List<Favorite> findFavorites() {
 
-
-
-
-		return null;
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		User user = (User) auth.getPrincipal();
+		FavoriteQueryBuilder favoriteQueryBuilder = new FavoriteQueryBuilder();
+		DBObject dbObject = favoriteQueryBuilder.getFavoritesByUser(user);
+		BasicQuery query = new BasicQuery(dbObject);
+		List<Favorite> favorites = operations.find(query,Favorite.class);
+		return favorites;
 	}
 
 	@Override
-	public List<Event> getFavorites(User user) {
-		return null;
+	public List<Favorite> getFavorites(User user) {
+		FavoriteQueryBuilder favoriteQueryBuilder = new FavoriteQueryBuilder();
+		DBObject dbObject = favoriteQueryBuilder.getFavoritesByUser(user);
+		BasicQuery query = new BasicQuery(dbObject);
+		List<Favorite> favorites = operations.find(query,Favorite.class);
+		return favorites;
 	}
 
-	@Override
-	public void insertFavorite(Favorite favorite) {
-
-	}
-
-	@Override
-	public void removeFavorite(Favorite favorite) {
-
-	}
 }

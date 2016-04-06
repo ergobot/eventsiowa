@@ -10,10 +10,6 @@ public interface CustomFavoriteRepository {
 
 	public List<Favorite> findFavorites();
 
-	public List<Event> getFavorites(User user);
-
-
-	public void insertFavorite(Favorite favorite);
-	public void removeFavorite(Favorite favorite);
+	public List<Favorite> getFavorites(User user);
 
 }

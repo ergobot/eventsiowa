@@ -12,7 +12,7 @@ import java.util.List;
 
 public class FavoriteQueryBuilder {
 
-    public static DBObject getFavoritesQuery(User user){
+    public DBObject getFavoritesByUser(User user){
         BasicDBObject subQuery = new BasicDBObject();
         subQuery.append("sub", user.getSub());
         return subQuery;
