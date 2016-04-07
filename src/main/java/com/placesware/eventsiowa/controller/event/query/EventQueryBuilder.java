@@ -22,8 +22,6 @@ public class EventQueryBuilder {
     public static BasicDBObject getEventsInPolygonQuery(Polygon polygon) {
         // ***Keep this query ***
         BasicDBObject query = new BasicDBObject("point",new BasicDBObject("$within", new BasicDBObject("$polygon", polygon)));
-//		QueryBuilder query = new QueryBuilder();
-//		query.put("point").withinPolygon(polygon);
         return query;
     }
     // getPolygon query
