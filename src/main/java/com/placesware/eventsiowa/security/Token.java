@@ -9,30 +9,34 @@ import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken;
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdTokenVerifier;
 import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.client.json.gson.GsonFactory;
-import com.placesware.eventsiowa.controller.user.User;
+import com.placesware.eventsiowa.user.domain.User;
 import org.springframework.security.authentication.InternalAuthenticationServiceException;
 
 public class Token {
 
+//	@Autowired
+//	private TokenProperties tokenPropertiesConfiguration;
 
-	private static String CLIENT_ID = "";
+//	@Autowired
+//	private EventRepository eventRepository;
+//
+//	@Autowired
+//	Environment env;
 
-
-	public static void Validate(String idTokenString) throws InternalAuthenticationServiceException{
-		
+	public void Validate(String idTokenString, String clientId) throws InternalAuthenticationServiceException{
 		if(idTokenString == null){
 			throw new InternalAuthenticationServiceException("Client token is empty");
 		}
 		if(idTokenString.isEmpty()){
 			throw new InternalAuthenticationServiceException("Client token is empty");
 		}
-		
+
 		NetHttpTransport transport = new NetHttpTransport();
 		GsonFactory jsonFactory = new GsonFactory();
 //
 //
 		GoogleIdTokenVerifier verifier = new GoogleIdTokenVerifier.Builder(transport, jsonFactory)
-			    .setAudience(Arrays.asList(CLIENT_ID))
+			    .setAudience(Arrays.asList(clientId))
 //			    // If you retrieved the token on Android using the Play Services 8.3 API or newer, set
 //			    // the issuer to "https://accounts.google.com". Otherwise, set the issuer to
 //			    // "accounts.google.com". If you need to verify tokens from multiple sources, build
@@ -85,7 +89,7 @@ public class Token {
 		
 	}
 	
-public static void ValidateUser(String idTokenString) throws InternalAuthenticationServiceException {
+public void ValidateUser(String idTokenString, String clientId) throws InternalAuthenticationServiceException {
 		
 		if(idTokenString == null){
 			 throw new InternalAuthenticationServiceException("Client token is empty");
@@ -100,7 +104,7 @@ public static void ValidateUser(String idTokenString) throws InternalAuthenticat
 		User user = new User();
 
 		GoogleIdTokenVerifier verifier = new GoogleIdTokenVerifier.Builder(transport, jsonFactory)
-			    .setAudience(Arrays.asList(CLIENT_ID))
+			    .setAudience(Arrays.asList(clientId))
 			    // If you retrieved the token on Android using the Play Services 8.3 API or newer, set
 			    // the issuer to "https://accounts.google.com". Otherwise, set the issuer to
 			    // "accounts.google.com". If you need to verify tokens from multiple sources, build
@@ -156,8 +160,8 @@ public static void ValidateUser(String idTokenString) throws InternalAuthenticat
 		
 	}
 
-public static User ValidateAndGetUser(String idTokenString) throws InternalAuthenticationServiceException{
-	
+public User ValidateAndGetUser(String idTokenString, String clientId) throws InternalAuthenticationServiceException{
+
 	if(idTokenString == null){
 		 throw new InternalAuthenticationServiceException("Client token is empty");
 	}
@@ -171,7 +175,7 @@ public static User ValidateAndGetUser(String idTokenString) throws InternalAuthe
 	User user = new User();
 
 	GoogleIdTokenVerifier verifier = new GoogleIdTokenVerifier.Builder(transport, jsonFactory)
-		    .setAudience(Arrays.asList(CLIENT_ID))
+		    .setAudience(Arrays.asList(clientId))
 		    // If you retrieved the token on Android using the Play Services 8.3 API or newer, set
 		    // the issuer to "https://accounts.google.com". Otherwise, set the issuer to
 		    // "accounts.google.com". If you need to verify tokens from multiple sources, build
@@ -183,7 +187,6 @@ public static User ValidateAndGetUser(String idTokenString) throws InternalAuthe
 	try {
 		idToken = verifier.verify(idTokenString);
 	} catch (GeneralSecurityException | IOException e) {
-		// TODO Auto-generated catch block
 		e.printStackTrace();
 		throw new InternalAuthenticationServiceException("Unable to authenticate");
 	}
@@ -218,6 +221,7 @@ public static User ValidateAndGetUser(String idTokenString) throws InternalAuthe
 	  user.setEmail(email);
 
 //	  EventDatabase.insertUserJson(user);
+
 
 	} else {
 

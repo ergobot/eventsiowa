@@ -13,6 +13,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.env.Environment;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.request.async.DeferredResult;
@@ -40,16 +41,13 @@ import static springfox.documentation.schema.AlternateTypeRules.newRule;
 @Configuration
 @ComponentScan
 @EnableSwagger2
+//@EnableConfigurationProperties(TokenProperties.class)
 @SpringBootApplication
 public class Application implements CommandLineRunner {
-
-//    @Autowired
-//    private EventRepository eventRepository;
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
-
 
     @Bean
     public Docket eventApi() {
@@ -86,16 +84,6 @@ public class Application implements CommandLineRunner {
         authorizationScopes[0] = authorizationScope;
         return newArrayList(new SecurityReference("mykey", authorizationScopes));
     }
-
-//    @Bean
-//    SecurityConfiguration security() {
-//        return new SecurityConfiguration("test-app-client-id", "test-app-realm", "test-app", "apiKey");
-//    }
-//
-//    @Bean
-//    UiConfiguration uiConfig() {
-//        return new UiConfiguration("validatorUrl");
-//    }
 
     @Bean
     SecurityConfiguration security() {

@@ -1,7 +1,7 @@
 package com.placesware.eventsiowa.config;
 
-import com.placesware.eventsiowa.security.CustomAuthenticationFilter;
-import com.placesware.eventsiowa.security.CustomAuthorization;
+import com.placesware.eventsiowa.security.*;
+import com.placesware.eventsiowa.user.data.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Bean;
@@ -12,6 +12,7 @@ import org.springframework.security.access.PermissionEvaluator;
 import org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler;
 import org.springframework.security.access.expression.method.MethodSecurityExpressionHandler;
 import org.springframework.security.access.hierarchicalroles.RoleHierarchy;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -27,6 +28,17 @@ import org.springframework.security.web.authentication.www.BasicAuthenticationFi
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+    @Autowired
+    AuthenticationProperties authenticationProperties;
+
+//    @Autowired
+//    CustomAuthenticationProvider customAuthenticationProvider;
+
+//    @Autowired
+//    UserRepository userRepository;
+//
+//    @Autowired
+//    TokenProperties tokenProperties;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -34,15 +46,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 csrf().disable().
                 sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).
                 and().
-                authorizeRequests().
-//                antMatchers(actuatorEndpoints()).hasRole(backendAdminRole).
-        anyRequest().authenticated().
+                authorizeRequests().anyRequest().authenticated().
                 and().
-                anonymous().disable();//.
+                anonymous().disable();
 //                exceptionHandling().authenticationEntryPoint(unauthorizedEntryPoint());
 
-        http.addFilterBefore(new CustomAuthenticationFilter(), BasicAuthenticationFilter.class);
+        if(authenticationProperties.isAuthenticate()) {
+            http.addFilterBefore(new CustomAuthenticationFilter(), BasicAuthenticationFilter.class);
+        }
 
     }
+
+//    @Override
+//    public void configure(AuthenticationManagerBuilder auth) throws Exception {
+//        auth.authenticationProvider(customAuthenticationProvider);
+//    }
 
 }
