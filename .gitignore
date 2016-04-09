@@ -5,7 +5,7 @@ build/
 gradle-app.setting
 
 # Ignore sensitive configurations
-src/main/resources/application.properties
+#src/main/resources/application.properties
 
 # Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
 !gradle-wrapper.jar
