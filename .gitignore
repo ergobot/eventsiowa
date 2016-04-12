@@ -11,4 +11,5 @@ src/main/resources/application.properties
 !gradle-wrapper.jar
 
 # Cache of project
+/src/main/resources/application.properties
 .gradletasknamecache
