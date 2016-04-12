@@ -55,7 +55,7 @@ public class CustomAuthenticationFilter extends OncePerRequestFilter {
 
         // Create our Authentication and let Spring know about it
         Authentication auth = new CustomAuthenticationToken(user,token);
-        auth.setAuthenticated(true);
+//        auth.setAuthenticated(true);
         SecurityContextHolder.getContext().setAuthentication(auth);
 
         filterChain.doFilter(request, response);

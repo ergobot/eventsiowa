@@ -7,16 +7,16 @@ import com.placesware.eventsiowa.favorite.domain.Favorite;
 import com.placesware.eventsiowa.favorite.data.FavoriteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-@Controller
+@RestController
 @RequestMapping("/favorite")
 public class FavoriteController {
 
@@ -37,8 +37,6 @@ public class FavoriteController {
         List<Event> events = eventRepository.findEvents(eventQueryBuilder.getEventsByIds(eventIds));
         return events;
     }
-
-
 
     @RequestMapping(method = RequestMethod.POST,path="/save")
     @PreAuthorize("@customAuthorization.isDataOwner(authentication, 'hello')")

@@ -37,11 +37,7 @@ import com.fasterxml.classmate.TypeResolver;
 
 import static springfox.documentation.schema.AlternateTypeRules.newRule;
 
-@EnableAutoConfiguration
-@Configuration
-@ComponentScan
 @EnableSwagger2
-//@EnableConfigurationProperties(TokenProperties.class)
 @SpringBootApplication
 public class Application implements CommandLineRunner {
 
